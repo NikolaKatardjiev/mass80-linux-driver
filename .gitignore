@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local research artifacts (not published)
+captures/
+docs/HOST_APP_RE_FINDINGS.md
