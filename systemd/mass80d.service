@@ -1,0 +1,20 @@
+[Unit]
+Description=Mass80 keyboard touchscreen companion daemon
+# Needs the graphical session for xdg-open (open_url), MPRIS on the session
+# bus and PipeWire for volume.
+PartOf=graphical-session.target
+After=graphical-session.target pipewire.service
+
+[Service]
+Type=simple
+# Run straight from the repo checkout. `install.sh` rewrites @REPO@.
+Environment=PYTHONPATH=@REPO@
+ExecStart=/usr/bin/python3 -m mass80d
+Restart=on-failure
+RestartSec=2
+# /dev/uinput, /dev/ttyACM* and /dev/i2c-* are granted to the seat user via
+# udev ACLs on most desktops. If yours uses groups instead, uncomment:
+# SupplementaryGroups=input uucp i2c
+
+[Install]
+WantedBy=graphical-session.target

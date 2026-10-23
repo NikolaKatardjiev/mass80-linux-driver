@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mass80d"
+version = "0.1.0"
+description = "Linux userspace companion daemon for the Mass80 keyboard's touchscreen"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "pyserial>=3.5",
+    "psutil>=5.9",
+    "evdev>=1.6",
+    "Pillow>=10",
+]
+
+[project.scripts]
+mass80d = "mass80d.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["mass80d", "mass80d.*"]
